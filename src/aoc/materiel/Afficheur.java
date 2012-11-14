@@ -1,9 +1,9 @@
 package aoc.materiel;
 
 public interface Afficheur {
-	// Contrôle des LEDs
+	// ContrÃ´le des LEDs
 	void allumerLED(int numLED) ;
-	void éteindreLED(int numLED) ;
-	// Affiche un entier sur l’afficheur externe du métronome
+	void eteindreLED(int numLED) ;
+	// Affiche un entier sur l'afficheur externe du mÃ©tronome
 	void afficherTempo(int valeurTempo) ;
 }

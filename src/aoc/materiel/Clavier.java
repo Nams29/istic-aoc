@@ -2,8 +2,8 @@ package aoc.materiel;
 
 public interface Clavier {
 	
-	// Retourne true si le bouton i est enfoncé, false si il est relaché.
-	// Le n°1 est start, le 2 est stop, le 3 est inc et le 4 est dec.
-	boolean touchePressée(int i) ;
+	// Retourne true si le bouton i est enfoncÃ©, false si il est relachï¿½.
+	// Le nÂ°1 est start, le 2 est stop, le 3 est inc et le 4 est dec.
+	boolean touchePressÃ©e(int i) ;
 	
 }

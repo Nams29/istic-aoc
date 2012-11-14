@@ -1,7 +1,9 @@
 package aoc.ihm;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,9 +18,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -34,26 +36,36 @@ import aoc.util.Subject;
 public class IHM extends JFrame implements Subject {
 
 	private static final long serialVersionUID = 9212323680853243952L;
+	
+	private static final int TEMPO_MIN = 0;
+	private static final int TEMPO_MAX = 240;
+	private static final int TEMPO_INIT = 60;    
 
 	private Controleur controller;
 	private Horloge horloge;
 
 	private Command eteindreLed;
 
-	JLabel labelLed1;
-	JLabel labelLed2;
-
 	private ImageIcon led_on;
 	private ImageIcon led_off;
+	
+	private JLabel labelLed1;
+	private JLabel labelLed2;
+	private JSlider sliderTempo;
+	private JTextField textTempo;
+	private JButton buttonStart;
+	private JButton buttonStop;
+	private JButton buttonPlus;
+	private JButton buttonMinus;
+	private JTextField textNbTemps;
+	
 	private File sound;
 	private Clip clip;
 	private AudioInputStream audio;
 	
-	JTextField textTempo;
-
 	public IHM(Controleur controller) {
 		super();
-
+		
 		this.controller = controller;
 
 		this.horloge = new ConcreteHorloge();
@@ -61,34 +73,50 @@ public class IHM extends JFrame implements Subject {
 		this.eteindreLed = new CommandEteindreLed(this);
 		
 		sound = new File("res/click.wav");
+
+		this.initLayout();
 		
 		Dimension dim = new Dimension(600, 400);
 		this.setPreferredSize(dim);
 		this.setSize(dim);
-
-		this.initLayout();
 	}
 
 	/**
-	 * Initialise les éléments graphiques
+	 * Initialise les ï¿½lï¿½ments graphiques
 	 */
 	private void initLayout() {
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new GridLayout(2, 4));
-
-		// Bouton Tempo
-		JButton buttonTempo = new JButton();
-		buttonTempo.setText("Tempo");
-
-		/* debut modif*/
-
-		final int TEMPO_MIN = 0;
-		final int TEMPO_MAX = 240;
-		final int TEMPO_INIT = 60;    
-		JSlider tempoSlider = new JSlider(JSlider.VERTICAL, TEMPO_MIN, TEMPO_MAX, TEMPO_INIT);
-
+		// Layout
+		this.setLayout(new GridBagLayout());
 		
-		tempoSlider.addChangeListener(new ChangeListener(){
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = gbc.gridy = 0;
+		gbc.weightx = gbc.weighty = 0;
+		gbc.fill = GridBagConstraints.BOTH;
+		gbc.insets = new Insets(10, 10, 10, 10);
+
+		// LEDS
+		this.led_on = new ImageIcon("res/red_led.png");
+		this.led_off = new ImageIcon("res/grey_led.png");
+		
+		// LED 1
+		this.labelLed1 = new JLabel(led_off);
+		this.getContentPane().add(this.labelLed1, gbc);
+		
+		// LED 2
+		gbc.gridx = 1;
+		this.labelLed2 = new JLabel(led_off);
+		this.getContentPane().add(this.labelLed2, gbc);
+		
+		// Slider tempo
+		gbc.gridx = 2;
+		gbc.gridwidth = 2;
+		gbc.weightx = 1;
+		this.sliderTempo = new JSlider(SwingConstants.HORIZONTAL, TEMPO_MIN, TEMPO_MAX, TEMPO_INIT);
+		this.sliderTempo.setMajorTickSpacing(50);
+		this.sliderTempo.setMinorTickSpacing(10);
+		this.sliderTempo.setPaintTicks(true);
+		this.sliderTempo.setPaintLabels(true);		
+		this.sliderTempo.addChangeListener(new ChangeListener(){
 						@Override
 						public void stateChanged(ChangeEvent e) {
 							JSlider source = (JSlider)e.getSource();
@@ -98,44 +126,24 @@ public class IHM extends JFrame implements Subject {
 						}
 					}
 		);
-		//framesPerSecond.addChangeListener(this);
-
-		//Turn on labels at major tick marks.
-		tempoSlider.setMajorTickSpacing(10);
-		tempoSlider.setMinorTickSpacing(5);
-		tempoSlider.setPaintTicks(true);
-		tempoSlider.setPaintLabels(false);
+		this.getContentPane().add(sliderTempo, gbc);
 		
-		mainPanel.add(tempoSlider);
-
-		/* end modif */
-
-
-		//mainPanel.add(buttonTempo);
-
-		// Affichage tempo
-		textTempo = new JTextField();
-		textTempo.setText("60");
-		mainPanel.add(textTempo);
-
-		// LEDS
-		this.led_on = new ImageIcon("res/led_red.png");
-		this.led_off = new ImageIcon("res/led_gray.png");
-
-		// LED 1
-		this.labelLed1 = new JLabel(led_off);
-		this.labelLed1.setText("LED 1");
-		mainPanel.add(labelLed1);
-
-		// LED 2
-		this.labelLed2 = new JLabel(led_off);
-		this.labelLed2.setText("LED 2");
-		mainPanel.add(labelLed2);
-
+		// Text tempo
+		gbc.gridx = 4;
+		gbc.gridwidth = 1;
+		gbc.weightx = 0;
+		this.textTempo = new JTextField(""+this.sliderTempo.getValue());
+		Dimension dim = new Dimension(60, 30);
+		this.textTempo.setSize(dim);
+		this.textTempo.setPreferredSize(dim);
+		this.textTempo.setMinimumSize(dim);
+		this.getContentPane().add(textTempo, gbc);
+		
 		// Bouton Start
-		JButton buttonStart = new JButton();
-		buttonStart.setText("START");
-		buttonStart.addActionListener(new ActionListener() {
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		this.buttonStart = new JButton(new ImageIcon("res/play.png"));
+		this.buttonStart.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -143,12 +151,12 @@ public class IHM extends JFrame implements Subject {
 				c.execute();
 			}
 		});
-		mainPanel.add(buttonStart);
+		this.getContentPane().add(buttonStart, gbc);
 
 		// Button Stop
-		JButton buttonStop = new JButton();
-		buttonStop.setText("STOP");
-		buttonStop.addActionListener(new ActionListener() {
+		gbc.gridx = 1;
+		this.buttonStop = new JButton(new ImageIcon("res/stop.png"));
+		this.buttonStop.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -156,31 +164,39 @@ public class IHM extends JFrame implements Subject {
 				c.execute();
 			}
 		});
-		mainPanel.add(buttonStop);
+		this.getContentPane().add(buttonStop, gbc);
 
 		// Bouton Plus
-		JButton buttonPlus = new JButton();
-		buttonPlus.setText("+");
-		buttonPlus.addActionListener(new ActionListener() {
+		gbc.gridx = 2;
+		gbc.weightx = 0.5;
+		this.buttonPlus = new JButton(new ImageIcon("res/plus.png"));
+		this.buttonPlus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				controller.augmenterMesures();
 			}
 		});
-		mainPanel.add(buttonPlus);
+		this.getContentPane().add(buttonPlus, gbc);
 
 		// Bouton Moins
-		JButton buttonMoins = new JButton();
-		buttonMoins.setText("-");
-		buttonMoins.addActionListener(new ActionListener() {
+		gbc.gridx = 3;
+		this.buttonMinus = new JButton(new ImageIcon("res/minus.png"));
+		this.buttonMinus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				controller.diminuerMesures();
 			}
 		});
-		mainPanel.add(buttonMoins);
-
-		this.setContentPane(mainPanel);
+		this.getContentPane().add(buttonMinus, gbc);
+		
+		// Text nb temps
+		gbc.gridx = 4;
+		gbc.weightx = 0;
+		this.textNbTemps = new JTextField("3");
+		this.textNbTemps.setSize(dim);
+		this.textNbTemps.setPreferredSize(dim);
+		this.textNbTemps.setMinimumSize(dim);
+		this.getContentPane().add(textNbTemps, gbc);
 	}
 
 	@Override
