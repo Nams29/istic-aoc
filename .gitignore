@@ -6,4 +6,4 @@ bin/*
 *.war
 *.ear
 
-.projet
+.project
