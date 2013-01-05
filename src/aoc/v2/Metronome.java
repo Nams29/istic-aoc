@@ -17,7 +17,7 @@ public class Metronome {
 		
 		Moteur moteur = new ConcreteMoteur();		
 		Controleur controller = new ConcreteControleur();		
-		Adapter adapter = new ConcreteAdapter();
+		ConcreteAdapter adapter = new ConcreteAdapter();
 		IHM ihm = new IHM();
 		
 		//lien moteur/controler
@@ -29,12 +29,9 @@ public class Metronome {
 		adapter.setController(controller);
 		
 		//lien Ihm adapter		
-		ihm.setController(adapter);
+		ihm.setAdapter(adapter);
 		adapter.setIhm(ihm);
-		
-		
-		
-		
+
 		ihm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ihm.setVisible(true);
 		

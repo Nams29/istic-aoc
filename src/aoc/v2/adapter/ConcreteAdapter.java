@@ -5,10 +5,6 @@ import aoc.v2.command.CommandLireMateriel;
 import aoc.v2.controller.Controleur;
 import aoc.v2.ihm.IHM;
 import aoc.v2.ihm.IIHM;
-import aoc.v2.materiel.Afficheur;
-import aoc.v2.materiel.Clavier;
-import aoc.v2.materiel.EmetteurSonore;
-import aoc.v2.materiel.Molette;
 import aoc.v2.moteur.ConcreteHorloge;
 import aoc.v2.moteur.Moteur;
 
@@ -17,6 +13,7 @@ public class ConcreteAdapter implements Adapter {
 
 	private Controleur controleur;
 	private IHM ihm;
+	
 	private Horloge horloge;
 
 	private boolean btnStart;
@@ -28,11 +25,6 @@ public class ConcreteAdapter implements Adapter {
 	private float tempo;
 
 	private CommandLireMateriel read;
-
-
-	public  ConcreteAdapter() {
-
-	}
 
 	@Override
 	public void lireMateriel() {
@@ -143,7 +135,20 @@ public class ConcreteAdapter implements Adapter {
 		this.read = new CommandLireMateriel(this);
 		this.horloge.activerPeriodiquement(read, (float) 0.05);
 	}
+	
+	/* test */
+	
+	public void setIhm(IHM i) {
+		this.ihm= i;
+		System.out.println("création horloge");
+		this.horloge = new ConcreteHorloge();
+		this.read = new CommandLireMateriel(this);
+		this.horloge.activerPeriodiquement(read, (float) 0.05);
+	}
 
+
+		
+	
 	/********** METHODE DE L'IHM *************/
 
 	@Override
@@ -173,82 +178,12 @@ public class ConcreteAdapter implements Adapter {
 	public Controleur getController() {
 		return this;
 	}
-	
+
+
 	@Override
 	public void setController(Controleur controller) {
 		this.controleur = controller;
 	}
 
-	@Override
-	public void allumerLED(int numLED) {
-		ihm.allumerLED(numLED);
-	}
-
-	@Override
-	public void eteindreLED(int numLED) {
-		ihm.eteindreLED();
-
-	}
-
-	@Override
-	public void afficherTempo(int valeurTempo) {
-		ihm.afficherTempo(valeurTempo);
-
-	}
-
-	@Override
-	public boolean touchePressée(int i) {
-		return ihm.touchePressée(i);
-	}
-
-	@Override
-	public void emettreClic() {
-		ihm.emettreClic();
-
-	}
-
-	@Override
-	public float position() {
-		return ihm.position();
-	}
-
-
-	@Override
-	public void afficherMesure(int valeurMesure) {
-		ihm.afficherMesure(valeurMesure);
-
-	}
-
-	/************** Methode du simulateur *****************/
-
-	@Override
-	public Horloge getHorloge() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Clavier getClavier() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Molette getMolette() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EmetteurSonore getEmetteurSonore() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Afficheur getAfficheur() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

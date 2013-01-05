@@ -86,16 +86,11 @@ public class ConcreteControleur implements Controleur, Observer {
 	@Override
 	public void update() {
 		this.ihm.majTempo(moteur.getTempo());
-		this.ihm.afficherMesure(moteur.getNbTemps());
+		//this.ihm.afficherMesure(moteur.getNbTemps());
 	}
 
 	public IIHM getIhm() {
 		return ihm;
-	}
-
-	public void setIhm(IHM ihm) {
-		this.ihm=ihm;
-		
 	}
 
 	@Override

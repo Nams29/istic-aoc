@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import aoc.util.Command;
 import aoc.util.Horloge;
+import aoc.v2.adapter.Adapter;
 import aoc.v2.controller.Controleur;
 import aoc.v2.materiel.Afficheur;
 import aoc.v2.materiel.Clavier;
@@ -28,15 +29,15 @@ import aoc.v2.materiel.EmetteurSonore;
 import aoc.v2.materiel.Molette;
 import aoc.v2.moteur.ConcreteHorloge;
 
-public class IHM extends JFrame implements IIHM {
+public class IHM extends JFrame implements Simulateur {
 
-	private static final long serialVersionUID = 9212323680853243952L;
+private static final long serialVersionUID = 9212323680853243952L;
 	
 	private static final int TEMPO_MIN = 0;
 	private static final int TEMPO_MAX = 240;
 	private static final int TEMPO_INIT = 60;    
 
-	private Controleur controller;
+	private Adapter adapter;
 	
 	@SuppressWarnings("unused")
 	private Horloge horloge;
@@ -84,6 +85,7 @@ public class IHM extends JFrame implements IIHM {
 	/**
 	 * Initialise les �l�ments graphiques
 	 */
+	@SuppressWarnings("deprecation")
 	private void initLayout() {
 		// Layout
 		this.setLayout(new GridBagLayout());
@@ -173,16 +175,16 @@ public class IHM extends JFrame implements IIHM {
 	/**
 	 * @return the controller
 	 */
-	public Controleur getController() {
-		return controller;
+	public Adapter getAdapter() {
+		return adapter;
 	}
 
 
 	/**
 	 * @param controller the controller to set
 	 */
-	public void setController(Controleur controller) {
-		this.controller = controller;
+	public void setAdapter(Adapter adapter) {
+		this.adapter = adapter;
 	}
 
 
@@ -257,6 +259,7 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public Clavier getClavier() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -264,6 +267,7 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public Molette getMolette() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -271,6 +275,7 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public EmetteurSonore getEmetteurSonore() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -278,40 +283,8 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public Afficheur getAfficheur() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
-	@Override
-	public void sonner() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void flasherLED(boolean mesure) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void eteindreLED() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void majTempo(float tempo) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }
