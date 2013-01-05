@@ -1,30 +1,36 @@
-package aoc.v1.controller;
+package aoc.controller;
 
+import aoc.command.CommandEteindreLed;
+import aoc.command.CommandMarquerMesure;
+import aoc.command.CommandMarquerTemps;
+import aoc.moteur.ConcreteHorloge;
 import aoc.moteur.Moteur;
+import aoc.util.Horloge;
 import aoc.util.Observer;
-import aoc.v1.command.CommandMarquerMesure;
-import aoc.v1.command.CommandMarquerTemps;
 import aoc.v1.ihm.IIHM;
 
 public class ConcreteControleur implements Controleur, Observer {
 	
 	private Moteur moteur;
 	private IIHM ihm;
+
+	private Horloge horloge;
+	private CommandEteindreLed eteindreLed;
 	
 	public ConcreteControleur() {
 		this.moteur = null;
 		this.ihm = null;
+		this.horloge = new ConcreteHorloge();
+		this.eteindreLed = new CommandEteindreLed(this);
 	}
 	
 	@Override
 	public void start() {
-		System.out.println("Controleur : moteur on");
 		this.moteur.setEtat(true);		
 	}
 
 	@Override
 	public void stop() {
-		System.out.println("Controleur : moteur off");
 		this.moteur.setEtat(false);		
 	}
 
@@ -32,17 +38,24 @@ public class ConcreteControleur implements Controleur, Observer {
 	public void marquerTempo() {
 		this.ihm.flasherLED(false);
 		this.ihm.sonner();
+		this.horloge.activerApresDelai(eteindreLed, (float) 0.2);
 	}
 	
 	@Override
 	public void marquerMesure() {
 		this.ihm.flasherLED(true);
 		this.ihm.sonner();
+		this.horloge.activerApresDelai(eteindreLed, (float) 0.2);
 	}
 
 	@Override
 	public void updateTempo(float tempo) {
 		this.moteur.setTempo(tempo);
+	}
+
+	@Override
+	public void eteindreLed() {
+		this.ihm.eteindreLED();
 	}
 
 	@Override
@@ -55,21 +68,24 @@ public class ConcreteControleur implements Controleur, Observer {
 		this.moteur.setNbTemps(this.moteur.getNbTemps()-1);	
 	}
 
-	
+	@Override
 	public Moteur getMoteur() {
 		return moteur;
 	}
-
+	
+	@Override
 	public void setMoteur(Moteur moteur) {
 		this.moteur = moteur;
 		this.moteur.setCmdMarquerTemps(new CommandMarquerTemps(this));
 		this.moteur.setCmdMarquerMesure(new CommandMarquerMesure(this));
 	}
 
+	@Override
 	public IIHM getIhm() {
 		return ihm;
 	}
 
+	@Override
 	public void setIhm(IIHM ihm) {
 		this.ihm = ihm;
 	}
@@ -77,12 +93,6 @@ public class ConcreteControleur implements Controleur, Observer {
 	@Override
 	public void update() {
 		this.ihm.majTempo(moteur.getTempo());
-	}
-
-	@Override
-	public void eteindreLed() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

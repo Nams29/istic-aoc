@@ -1,6 +1,6 @@
 package aoc.v1.ihm;
 
-import aoc.v1.controller.Controleur;
+import aoc.controller.Controleur;
 
 public interface IIHM {
 	

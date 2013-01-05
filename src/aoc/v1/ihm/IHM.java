@@ -24,13 +24,10 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import aoc.moteur.ConcreteHorloge;
+import aoc.command.CommandStart;
+import aoc.command.CommandStop;
+import aoc.controller.Controleur;
 import aoc.util.Command;
-import aoc.util.Horloge;
-import aoc.v1.command.CommandEteindreLed;
-import aoc.v1.command.CommandStart;
-import aoc.v1.command.CommandStop;
-import aoc.v1.controller.Controleur;
 
 public class IHM extends JFrame implements IIHM {
 
@@ -41,9 +38,6 @@ public class IHM extends JFrame implements IIHM {
 	private static final int TEMPO_INIT = 60;    
 
 	private Controleur controller;
-	private Horloge horloge;
-
-	private Command eteindreLed;
 
 	private ImageIcon led_on;
 	private ImageIcon led_off;
@@ -66,12 +60,8 @@ public class IHM extends JFrame implements IIHM {
 		super();
 		
 		this.controller = controller;
-
-		this.horloge = new ConcreteHorloge();
-
-		this.eteindreLed = new CommandEteindreLed(this);
 		
-		sound = new File("res/click.wav");
+		this.sound = new File("res/click.wav");
 
 		this.initLayout();
 		
@@ -198,6 +188,7 @@ public class IHM extends JFrame implements IIHM {
 		this.getContentPane().add(textNbTemps, gbc);
 	}
 	
+	@Override
 	public void sonner() {
 		try {
 			audio = AudioSystem.getAudioInputStream(sound);
@@ -213,29 +204,24 @@ public class IHM extends JFrame implements IIHM {
 		}
 	}
 	
-	/**
-	 * Allume les LEDs
-	 */
+	@Override
 	public void flasherLED(boolean mesure) {
 		this.labelLed1.setIcon(led_on);
-		if (mesure) this.labelLed2.setIcon(led_on);
+		
+		if (mesure) {
+			this.labelLed2.setIcon(led_on);
+		}
 		this.repaint();
-		horloge.activerApresDelai(eteindreLed, (float) 0.2);
-
 	}
 
-	/**
-	 * Eteint les LEDs
-	 */
+	@Override
 	public void eteindreLED() {
 		this.labelLed1.setIcon(led_off);
 		this.labelLed2.setIcon(led_off);
 		this.repaint();
 	}
 	
-	/**
-	 * Eteint les LEDs
-	 */
+	@Override
 	public void majTempo(float tempo) {
 		this.textTempo.setText(tempo+"");
 	}
@@ -247,14 +233,12 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public Controleur getController() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.controller;
 	}
 
 	@Override
 	public void setController(Controleur controller) {
-		// TODO Auto-generated method stub
-		
+		this.controller = controller;
 	}
 
 

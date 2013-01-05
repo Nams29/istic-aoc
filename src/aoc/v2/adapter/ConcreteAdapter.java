@@ -1,11 +1,11 @@
 package aoc.v2.adapter;
 
+import aoc.command.CommandLireMateriel;
+import aoc.controller.Controleur;
 import aoc.moteur.ConcreteHorloge;
 import aoc.moteur.Moteur;
 import aoc.util.Horloge;
-import aoc.v1.controller.Controleur;
 import aoc.v1.ihm.IIHM;
-import aoc.v2.command.CommandLireMateriel;
 import aoc.v2.ihm.IHM;
 
 public class ConcreteAdapter implements Adapter {
@@ -44,14 +44,12 @@ public class ConcreteAdapter implements Adapter {
 		boolean oldBtnPlus = btnPlus;
 		btnPlus=ihm.buttonPlus.isActive();
 		if ((btnPlus != oldBtnPlus )&& btnPlus) {
-			//System.out.println("augmenter mesure");
 			controleur.augmenterMesures();
 		}
 
 		boolean oldBtnMinus = btnMinus;
 		btnMinus=ihm.buttonMinus.isActive();
 		if ((btnMinus != oldBtnMinus )&& btnMinus) {
-			System.out.println("Diminuer mesure");
 			controleur.diminuerMesures();
 		}
 
@@ -61,7 +59,6 @@ public class ConcreteAdapter implements Adapter {
 			tempo= ihm.sliderTempo.getValue();
 		}
 		if (tempo != oldtempo ) {
-			System.out.println("Modifier tempo");
 			controleur.updateTempo(tempo);
 		}
 
@@ -129,7 +126,6 @@ public class ConcreteAdapter implements Adapter {
 	@Override
 	public void setIhm(IIHM i) {
 		this.ihm=(IHM) i;
-		System.out.println("création horloge");
 		this.horloge = new ConcreteHorloge();
 		this.read = new CommandLireMateriel(this);
 		this.horloge.activerPeriodiquement(read, (float) 0.05);
@@ -139,7 +135,6 @@ public class ConcreteAdapter implements Adapter {
 	
 	public void setIhm(IHM i) {
 		this.ihm= i;
-		System.out.println("création horloge");
 		this.horloge = new ConcreteHorloge();
 		this.read = new CommandLireMateriel(this);
 		this.horloge.activerPeriodiquement(read, (float) 0.05);
@@ -163,7 +158,6 @@ public class ConcreteAdapter implements Adapter {
 
 	@Override
 	public void eteindreLED() {
-		System.out.println("ConcreteAdapter : Eteindre LED");
 		ihm.eteindreLED(1);
 		ihm.eteindreLED(2);
 	}

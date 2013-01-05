@@ -24,7 +24,6 @@ import aoc.materiel.Clavier;
 import aoc.materiel.EmetteurSonore;
 import aoc.materiel.Molette;
 import aoc.moteur.ConcreteHorloge;
-import aoc.util.Command;
 import aoc.util.Horloge;
 import aoc.v2.adapter.Adapter;
 
@@ -38,10 +37,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 
 	private Adapter adapter;
 	
-	@SuppressWarnings("unused")
 	private Horloge horloge;
-	@SuppressWarnings("unused")
-	private Command eteindreLed;
 
 	private ImageIcon led_on;
 	private ImageIcon led_off;
@@ -196,8 +192,8 @@ private static final long serialVersionUID = 9212323680853243952L;
 
 	@Override
 	public void eteindreLED(int numLED) {
-		System.out.println("éteindre led : " + numLED);
-		tabLed[numLED].setIcon(led_off);
+		this.tabLed[numLED].setIcon(led_off);
+		
 		this.repaint();
 	}
 
@@ -210,19 +206,14 @@ private static final long serialVersionUID = 9212323680853243952L;
 	
 	@Override
 	public void afficherMesure(int valeurMesure) {
-		//System.out.println(valeurMesure);
 		this.textNbTemps.setText(valeurMesure+"");
 	}
-
-
-
+	
 	@Override
 	public boolean touchePressée(int i) {
 		return tabButton[i].isActive();
 	}
-
-
-
+	
 	@Override
 	public void emettreClic() {
 		try {
@@ -238,50 +229,34 @@ private static final long serialVersionUID = 9212323680853243952L;
 			e.printStackTrace();
 		}	
 	}
-
-
+	
 	@Override
 	public float position() {
 		return this.sliderTempo.getValue();
 	}
-
-
-
+	
 	@Override
 	public Horloge getHorloge() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.horloge;
 	}
-
-
-
+	
 	@Override
 	public Clavier getClavier() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
+	
 	@Override
 	public Molette getMolette() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
+	
 	@Override
 	public EmetteurSonore getEmetteurSonore() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
+	
 	@Override
 	public Afficheur getAfficheur() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

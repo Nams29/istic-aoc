@@ -1,4 +1,4 @@
-package aoc.v1.controller;
+package aoc.controller;
 
 import aoc.moteur.Moteur;
 import aoc.v1.ihm.IIHM;
@@ -45,7 +45,6 @@ public interface Controleur {
 	 * Décrémente le nombre de temps par mesure
 	 */
 	public void diminuerMesures();
-	
 	
 	public Moteur getMoteur();
 	public void setMoteur(Moteur m);

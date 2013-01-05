@@ -1,19 +1,19 @@
-package aoc.v1.command;
+package aoc.command;
 
+import aoc.controller.Controleur;
 import aoc.util.Command;
-import aoc.v1.controller.Controleur;
 
-public class CommandMarquerMesure implements Command {
+public class CommandMarquerTemps implements Command {
 
 	private Controleur controleur;
 	
-	public CommandMarquerMesure(Controleur c) {
+	public CommandMarquerTemps(Controleur c) {
 		this.controleur = c;
 	}
 	
 	@Override
 	public void execute() {
-		this.controleur.marquerMesure();
+		this.controleur.marquerTempo();
 	}
 	
 	public Controleur getControleur() {

@@ -1,7 +1,7 @@
 package aoc.moteur;
 
+import aoc.controller.Controleur;
 import aoc.util.Command;
-import aoc.v1.controller.Controleur;
 
 public interface Moteur {
 

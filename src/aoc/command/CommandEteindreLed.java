@@ -1,11 +1,11 @@
-package aoc.v2.command;
+package aoc.command;
 
+import aoc.controller.Controleur;
 import aoc.util.Command;
-import aoc.v1.controller.Controleur;
 
 public class CommandEteindreLed implements Command {
 
-	private Controleur c;
+private Controleur c;
 	
 	public CommandEteindreLed(Controleur c) {
 		this.c = c;

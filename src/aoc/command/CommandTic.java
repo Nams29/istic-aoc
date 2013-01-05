@@ -1,4 +1,4 @@
-package aoc.v1.command;
+package aoc.command;
 
 import aoc.moteur.Moteur;
 import aoc.util.Command;

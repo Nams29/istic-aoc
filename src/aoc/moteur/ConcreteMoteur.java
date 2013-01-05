@@ -2,12 +2,12 @@ package aoc.moteur;
 
 import java.util.ArrayList;
 
+import aoc.command.CommandTic;
+import aoc.controller.Controleur;
 import aoc.util.Command;
 import aoc.util.Horloge;
 import aoc.util.Observer;
 import aoc.util.Subject;
-import aoc.v1.command.CommandTic;
-import aoc.v1.controller.Controleur;
 
 public class ConcreteMoteur implements Moteur, Subject{
 	
@@ -50,9 +50,8 @@ public class ConcreteMoteur implements Moteur, Subject{
 			
 			// Si mise en marche
 			if (this.etat == true) {
-				// Si 1er lancement, on cr�e l'horloge 
+				// Si 1er lancement, on crée l'horloge 
 				if (this.horloge == null) {
-					System.out.println("Moteur : Cr�ation de l'horloge");
 					this.horloge = new ConcreteHorloge();
 				}
 				// On lance l'horloge
