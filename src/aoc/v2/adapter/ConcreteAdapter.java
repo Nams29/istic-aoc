@@ -63,6 +63,8 @@ public class ConcreteAdapter implements Adapter {
 		}
 
 	}
+	
+
 
 	/********** METHODE DU CONTROLEUR *************/
 
@@ -161,9 +163,10 @@ public class ConcreteAdapter implements Adapter {
 	public void majTempo(float tempo) {
 		ihm.afficherTempo((int)tempo);
 	}
+	
 	@Override
-	public void afficherMesure(float mesure) {
-		ihm.afficherMesure((int) mesure);
+	public void majMesure(int nbTemps) {
+		ihm.afficherMesure(nbTemps);
 	}
 	
 	@Override
@@ -171,11 +174,11 @@ public class ConcreteAdapter implements Adapter {
 		return this;
 	}
 
-
 	@Override
 	public void setController(Controleur controller) {
 		this.controleur = controller;
 	}
+
 
 
 }

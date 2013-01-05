@@ -227,8 +227,8 @@ public class ConcreteIHM extends JFrame implements IHM {
 	}
 
 	@Override
-	public void afficherMesure(float mesure) {
-		// TODO Auto-generated method stub
+	public void majMesure(int nbTemps) { 
+		this.textNbTemps.setText(nbTemps+"");
 	}
 
 	@Override

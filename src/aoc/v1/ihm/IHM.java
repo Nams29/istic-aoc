@@ -27,10 +27,10 @@ public interface IHM {
 	public void majTempo(float tempo) ;
 	
 	/**
-	 * Mets à jour l'affichage de la mesure
-	 * @param mesure
+	 * Mets à jour l'affichage du nombre de temps par mesure
+	 * @param nbTemps
 	 */
-	public void afficherMesure(float mesure);
+	public void majMesure(int nbTemps);
 	
 	public Controleur getController();
 	public void setController(Controleur controller);
