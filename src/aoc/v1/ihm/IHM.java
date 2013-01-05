@@ -33,7 +33,7 @@ import aoc.v1.command.CommandStop;
 import aoc.v1.controller.Controleur;
 import aoc.v1.moteur.ConcreteHorloge;
 
-public class IHM extends JFrame implements Subject {
+public class IHM extends JFrame implements IIHM, Subject {
 
 	private static final long serialVersionUID = 9212323680853243952L;
 	
@@ -245,6 +245,23 @@ public class IHM extends JFrame implements Subject {
 	 */
 	public void majTempo(float tempo) {
 		this.textTempo.setText(tempo+"");
+	}
+
+	@Override
+	public void afficherMesure(float mesure) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Controleur getController() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setController(Controleur controller) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

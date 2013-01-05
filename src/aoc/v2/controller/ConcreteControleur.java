@@ -2,12 +2,12 @@ package aoc.v2.controller;
 
 import aoc.util.Horloge;
 import aoc.util.Observer;
-import aoc.v2.moteur.Moteur;
+import aoc.v1.controller.Controleur;
+import aoc.v1.ihm.IIHM;
+import aoc.v1.moteur.Moteur;
 import aoc.v2.command.CommandEteindreLed;
 import aoc.v2.command.CommandMarquerMesure;
 import aoc.v2.command.CommandMarquerTemps;
-import aoc.v2.ihm.IHM;
-import aoc.v2.ihm.IIHM;
 import aoc.v2.moteur.ConcreteHorloge;
 
 public class ConcreteControleur implements Controleur, Observer {

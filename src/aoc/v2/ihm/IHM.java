@@ -82,9 +82,8 @@ private static final long serialVersionUID = 9212323680853243952L;
 
 
 	/**
-	 * Initialise les �l�ments graphiques
+	 * Initialise les éléments graphiques
 	 */
-	@SuppressWarnings("deprecation")
 	private void initLayout() {
 		// Layout
 		this.setLayout(new GridBagLayout());

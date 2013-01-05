@@ -1,7 +1,7 @@
 package aoc.v2.command;
 
 import aoc.util.Command;
-import aoc.v2.controller.Controleur;
+import aoc.v1.controller.Controleur;
 
 public class CommandMarquerTemps implements Command {
 

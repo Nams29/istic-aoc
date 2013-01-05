@@ -1,6 +1,6 @@
 package aoc.v1.controller;
 
-import aoc.v1.ihm.IHM;
+import aoc.v1.ihm.IIHM;
 import aoc.v1.moteur.Moteur;
 
 public interface Controleur {
@@ -19,6 +19,6 @@ public interface Controleur {
 	public Moteur getMoteur();
 	public void setMoteur(Moteur m);
 	
-	public IHM getIhm();
-	public void setIhm(IHM i);
+	public IIHM getIhm();
+	public void setIhm(IIHM ihm);
 }

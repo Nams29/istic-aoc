@@ -1,12 +1,12 @@
 package aoc.v2.adapter;
 
 import aoc.util.Horloge;
+import aoc.v1.controller.Controleur;
+import aoc.v1.ihm.IIHM;
+import aoc.v1.moteur.Moteur;
 import aoc.v2.command.CommandLireMateriel;
-import aoc.v2.controller.Controleur;
 import aoc.v2.ihm.IHM;
-import aoc.v2.ihm.IIHM;
 import aoc.v2.moteur.ConcreteHorloge;
-import aoc.v2.moteur.Moteur;
 
 
 public class ConcreteAdapter implements Adapter {

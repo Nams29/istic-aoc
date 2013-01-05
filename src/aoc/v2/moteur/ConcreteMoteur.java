@@ -6,8 +6,9 @@ import aoc.util.Command;
 import aoc.util.Horloge;
 import aoc.util.Observer;
 import aoc.util.Subject;
+import aoc.v1.controller.Controleur;
+import aoc.v1.moteur.Moteur;
 import aoc.v2.command.CommandTic;
-import aoc.v2.controller.Controleur;
 
 public class ConcreteMoteur implements Moteur, Subject {
 	
