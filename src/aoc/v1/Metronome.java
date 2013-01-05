@@ -6,8 +6,7 @@ import aoc.controller.ConcreteControleur;
 import aoc.controller.Controleur;
 import aoc.moteur.ConcreteMoteur;
 import aoc.moteur.Moteur;
-import aoc.v1.ihm.IHM;
-
+import aoc.v1.ihm.ConcreteIHM;
 
 public class Metronome {
 	
@@ -19,7 +18,7 @@ public class Metronome {
 		
 		moteur.setController(controller);
 		
-		IHM ihm = new IHM(controller);
+		ConcreteIHM ihm = new ConcreteIHM(controller);
 		controller.setIhm(ihm);
 		
 		ihm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

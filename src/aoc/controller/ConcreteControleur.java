@@ -7,12 +7,12 @@ import aoc.moteur.ConcreteHorloge;
 import aoc.moteur.Moteur;
 import aoc.util.Horloge;
 import aoc.util.Observer;
-import aoc.v1.ihm.IIHM;
+import aoc.v1.ihm.IHM;
 
 public class ConcreteControleur implements Controleur, Observer {
 	
 	private Moteur moteur;
-	private IIHM ihm;
+	private IHM ihm;
 
 	private Horloge horloge;
 	private CommandEteindreLed eteindreLed;
@@ -81,12 +81,12 @@ public class ConcreteControleur implements Controleur, Observer {
 	}
 
 	@Override
-	public IIHM getIhm() {
+	public IHM getIhm() {
 		return ihm;
 	}
 
 	@Override
-	public void setIhm(IIHM ihm) {
+	public void setIhm(IHM ihm) {
 		this.ihm = ihm;
 	}
 

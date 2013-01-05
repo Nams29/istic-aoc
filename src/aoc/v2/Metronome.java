@@ -7,7 +7,7 @@ import aoc.controller.Controleur;
 import aoc.moteur.ConcreteMoteur;
 import aoc.moteur.Moteur;
 import aoc.v2.adapter.ConcreteAdapter;
-import aoc.v2.ihm.IHM;
+import aoc.v2.ihm.ConcreteIHM;
 
 public class Metronome {
 	
@@ -16,7 +16,7 @@ public class Metronome {
 		Moteur moteur = new ConcreteMoteur();		
 		Controleur controller = new ConcreteControleur();		
 		ConcreteAdapter adapter = new ConcreteAdapter();
-		IHM ihm = new IHM();
+		ConcreteIHM ihm = new ConcreteIHM();
 		
 		//lien moteur/controler
 		controller.setMoteur(moteur);

@@ -5,13 +5,13 @@ import aoc.controller.Controleur;
 import aoc.moteur.ConcreteHorloge;
 import aoc.moteur.Moteur;
 import aoc.util.Horloge;
-import aoc.v1.ihm.IIHM;
-import aoc.v2.ihm.IHM;
+import aoc.v1.ihm.IHM;
+import aoc.v2.ihm.ConcreteIHM;
 
 public class ConcreteAdapter implements Adapter {
 
 	private Controleur controleur;
-	private IHM ihm;
+	private ConcreteIHM ihm;
 	
 	private Horloge horloge;
 
@@ -119,16 +119,16 @@ public class ConcreteAdapter implements Adapter {
 	}
 
 	@Override
-	public IIHM getIhm() {
+	public IHM getIhm() {
 		return this;
 	}
 
 	@Override
-	public void setIhm(IIHM i) {
-		this.ihm = (IHM) i;
+	public void setIhm(IHM i) {
+		this.ihm = (ConcreteIHM) i;
 	}
 	
-	public void setIhm(IHM i) {
+	public void setIhm(ConcreteIHM i) {
 		this.ihm= i;
 		this.horloge = new ConcreteHorloge();
 		this.read = new CommandLireMateriel(this);
