@@ -1,4 +1,4 @@
-package aoc.v1.moteur;
+package aoc.moteur;
 
 import java.util.ArrayList;
 
@@ -106,6 +106,7 @@ public class ConcreteMoteur implements Moteur, Subject{
 	public void setNbTemps(int nbTemps) {
 		if (nbTemps > 0) {
 			this.nbTemps = nbTemps;
+			this.notifyObservers();
 		}
 	}
 	
@@ -129,27 +130,6 @@ public class ConcreteMoteur implements Moteur, Subject{
 		this.marquerMesure = c;
 	}
 
-	public Horloge getHorloge() {
-		return horloge;
-	}
-
-	public void setHorloge(Horloge horloge) {
-		this.horloge = horloge;
-	}
-	
-	public void addObserver(Observer o) {
-		this.observers.add(o);
-		System.out.println("Ajout observeur : "+observers.toString());
-		
-	}
-	
-	@Override
-	public void notifyObservers() {	
-		for(Observer o : observers) {
-			o.update();
-		}
-	}
-
 	@Override
 	public void setController(Controleur c) {
 		this.controleur = c;
@@ -159,6 +139,26 @@ public class ConcreteMoteur implements Moteur, Subject{
 	@Override
 	public Controleur getController() {
 		return controleur;
+	}
+
+	public Horloge getHorloge() {
+		return horloge;
+	}
+
+	public void setHorloge(Horloge horloge) {
+		this.horloge = horloge;
+	}
+	
+	@Override
+	public void addObserver(Observer o) {
+		this.observers.add(o);
+	}
+	
+	@Override
+	public void notifyObservers() {	
+		for(Observer o : observers) {
+			o.update();
+		}
 	}
 
 }

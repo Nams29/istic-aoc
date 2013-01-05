@@ -1,15 +1,15 @@
 package aoc.v1.controller;
 
+import aoc.moteur.Moteur;
 import aoc.util.Observer;
 import aoc.v1.command.CommandMarquerMesure;
 import aoc.v1.command.CommandMarquerTemps;
-import aoc.v1.ihm.IHM;
-import aoc.v1.moteur.Moteur;
+import aoc.v1.ihm.IIHM;
 
 public class ConcreteControleur implements Controleur, Observer {
 	
 	private Moteur moteur;
-	private IHM ihm;
+	private IIHM ihm;
 	
 	public ConcreteControleur() {
 		this.moteur = null;
@@ -55,7 +55,7 @@ public class ConcreteControleur implements Controleur, Observer {
 		this.moteur.setNbTemps(this.moteur.getNbTemps()-1);	
 	}
 
-
+	
 	public Moteur getMoteur() {
 		return moteur;
 	}
@@ -66,11 +66,11 @@ public class ConcreteControleur implements Controleur, Observer {
 		this.moteur.setCmdMarquerMesure(new CommandMarquerMesure(this));
 	}
 
-	public IHM getIhm() {
+	public IIHM getIhm() {
 		return ihm;
 	}
 
-	public void setIhm(IHM ihm) {
+	public void setIhm(IIHM ihm) {
 		this.ihm = ihm;
 	}
 

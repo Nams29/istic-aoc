@@ -2,17 +2,15 @@ package aoc.v2;
 
 import javax.swing.JFrame;
 
-import aoc.v2.adapter.Adapter;
+import aoc.moteur.ConcreteMoteur;
+import aoc.moteur.Moteur;
+import aoc.v1.controller.Controleur;
 import aoc.v2.adapter.ConcreteAdapter;
 import aoc.v2.controller.ConcreteControleur;
-import aoc.v2.controller.Controleur;
 import aoc.v2.ihm.IHM;
-import aoc.v2.moteur.ConcreteMoteur;
-import aoc.v2.moteur.Moteur;
-
 
 public class Metronome {
-	// TEST commit commentaire !
+	
 	public static void main(String[] args) {
 		
 		Moteur moteur = new ConcreteMoteur();		
