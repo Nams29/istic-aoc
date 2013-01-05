@@ -173,7 +173,11 @@ public class ConcreteAdapter implements Adapter {
 	public void majTempo(float tempo) {
 		ihm.afficherTempo((int)tempo);
 	}
-
+	@Override
+	public void afficherMesure(float mesure) {
+		ihm.afficherMesure((int) mesure);
+	}
+	
 	@Override
 	public Controleur getController() {
 		return this;
