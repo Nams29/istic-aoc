@@ -19,14 +19,13 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import aoc.materiel.Afficheur;
+import aoc.materiel.Clavier;
+import aoc.materiel.EmetteurSonore;
+import aoc.materiel.Molette;
 import aoc.util.Command;
 import aoc.util.Horloge;
 import aoc.v2.adapter.Adapter;
-import aoc.v2.controller.Controleur;
-import aoc.v2.materiel.Afficheur;
-import aoc.v2.materiel.Clavier;
-import aoc.v2.materiel.EmetteurSonore;
-import aoc.v2.materiel.Molette;
 import aoc.v2.moteur.ConcreteHorloge;
 
 public class IHM extends JFrame implements Simulateur {

@@ -10,9 +10,7 @@ public interface Controleur {
 	
 	public void marquerTempo();
 	public void marquerMesure();
-	
 	public void eteindreLed();
-	
 	public void updateTempo(float tempo);
 	
 	public void augmenterMesures();

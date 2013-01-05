@@ -2,27 +2,35 @@ package aoc.materiel;
 
 import aoc.util.Horloge;
 
-public  class Materiel {
-
-	// Permet d�acc�der aux interfaces de contr�le du mat�riel
-	static Horloge getHorloge() {
-		return null;
-	}
-
-	static Clavier getClavier() {
-		return null;
-	}
-
-	static Molette getMolette() {
-		return null;
-	}
+/**
+ * Permet d'accéder aux interface de contrôle du matériel
+ *
+ */
+public interface Materiel {
 	
-	static EmetteurSonore getEmetteurSonore() {
-		return null;
-	}
+	/**
+	 * @return l'horloge
+	 */
+	public Horloge getHorloge();
 	
-	static Afficheur getAfficheur() {
-		return null;
-	}
+	/**
+	 * @return le clavier
+	 */
+	public Clavier getClavier();
+
+	/**
+	 * @return la molette
+	 */
+	public Molette getMolette();
+	
+	/**
+	 * @return l'émetteur sonore
+	 */
+	public EmetteurSonore getEmetteurSonore();
+	
+	/**
+	 * @return l'afficheur
+	 */
+	public Afficheur getAfficheur();
 
 }
