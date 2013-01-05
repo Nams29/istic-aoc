@@ -1,4 +1,4 @@
-package aoc.v1.moteur;
+package aoc.moteur;
 
 import aoc.util.Command;
 import aoc.v1.controller.Controleur;
@@ -19,6 +19,9 @@ public interface Moteur {
 	public Command getCmdMarquerMesure();
 	public void setCmdMarquerMesure(Command c);
 	
+	/**
+	 * Marque un temps
+	 */
 	public void tic();
 	
 	public void setController(Controleur c);

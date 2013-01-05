@@ -24,16 +24,15 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import aoc.moteur.ConcreteHorloge;
 import aoc.util.Command;
 import aoc.util.Horloge;
-import aoc.util.Subject;
 import aoc.v1.command.CommandEteindreLed;
 import aoc.v1.command.CommandStart;
 import aoc.v1.command.CommandStop;
 import aoc.v1.controller.Controleur;
-import aoc.v1.moteur.ConcreteHorloge;
 
-public class IHM extends JFrame implements IIHM, Subject {
+public class IHM extends JFrame implements IIHM {
 
 	private static final long serialVersionUID = 9212323680853243952L;
 	
@@ -197,12 +196,6 @@ public class IHM extends JFrame implements IIHM, Subject {
 		this.textNbTemps.setPreferredSize(dim);
 		this.textNbTemps.setMinimumSize(dim);
 		this.getContentPane().add(textNbTemps, gbc);
-	}
-
-	@Override
-	public void notifyObservers() {
-		// TODO Auto-generated method stub
-
 	}
 	
 	public void sonner() {

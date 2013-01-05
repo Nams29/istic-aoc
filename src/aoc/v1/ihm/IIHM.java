@@ -4,12 +4,34 @@ import aoc.v1.controller.Controleur;
 
 public interface IIHM {
 	
-	void sonner();
-	void flasherLED(boolean mesure);
-	void eteindreLED();
-	void majTempo(float tempo) ;	
-	void afficherMesure(float mesure);
+	/**
+	 * Joue le son du métronome
+	 */
+	public void sonner();
 	
-	Controleur getController();
-	void setController(Controleur controller);
+	/**
+	 * Allume la ou les LED
+	 * @param mesure indique si on signale un temps ou une mesure
+	 */
+	public void flasherLED(boolean mesure);
+	
+	/**
+	 * Eteint les LED
+	 */
+	public void eteindreLED();
+	
+	/**
+	 * Mets à jour l'affichage du tempo
+	 * @param tempo
+	 */
+	public void majTempo(float tempo) ;
+	
+	/**
+	 * Mets à jour l'affichage de la mesure
+	 * @param mesure
+	 */
+	public void afficherMesure(float mesure);
+	
+	public Controleur getController();
+	public void setController(Controleur controller);
 }

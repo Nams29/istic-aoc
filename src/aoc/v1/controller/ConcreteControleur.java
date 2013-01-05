@@ -1,10 +1,10 @@
 package aoc.v1.controller;
 
+import aoc.moteur.Moteur;
 import aoc.util.Observer;
 import aoc.v1.command.CommandMarquerMesure;
 import aoc.v1.command.CommandMarquerTemps;
 import aoc.v1.ihm.IIHM;
-import aoc.v1.moteur.Moteur;
 
 public class ConcreteControleur implements Controleur, Observer {
 	

@@ -2,11 +2,11 @@ package aoc.v1;
 
 import javax.swing.JFrame;
 
+import aoc.moteur.ConcreteMoteur;
+import aoc.moteur.Moteur;
 import aoc.v1.controller.ConcreteControleur;
 import aoc.v1.controller.Controleur;
 import aoc.v1.ihm.IHM;
-import aoc.v1.moteur.ConcreteMoteur;
-import aoc.v1.moteur.Moteur;
 
 
 public class Metronome {
