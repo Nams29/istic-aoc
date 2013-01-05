@@ -130,10 +130,6 @@ public class ConcreteAdapter implements Adapter {
 	@Override
 	public void setIhm(IIHM i) {
 		this.ihm=(IHM) i;
-		System.out.println("création horloge");
-		this.horloge = new ConcreteHorloge();
-		this.read = new CommandLireMateriel(this);
-		this.horloge.activerPeriodiquement(read, (float) 0.05);
 	}
 	
 	/* test */
