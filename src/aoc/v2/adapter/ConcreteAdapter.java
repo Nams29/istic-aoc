@@ -131,8 +131,6 @@ public class ConcreteAdapter implements Adapter {
 		this.horloge.activerPeriodiquement(read, (float) 0.05);
 	}
 	
-	/* test */
-	
 	public void setIhm(IHM i) {
 		this.ihm= i;
 		this.horloge = new ConcreteHorloge();
