@@ -1,19 +1,27 @@
-package aoc.controller;
+package aoc.v2.controller;
 
-import aoc.commands.CommandMarquerMesure;
-import aoc.commands.CommandMarquerTemps;
-import aoc.ihm.IHM;
-import aoc.moteur.Moteur;
+import aoc.util.Horloge;
 import aoc.util.Observer;
+import aoc.v2.moteur.Moteur;
+import aoc.v2.command.CommandEteindreLed;
+import aoc.v2.command.CommandMarquerMesure;
+import aoc.v2.command.CommandMarquerTemps;
+import aoc.v2.ihm.IHM;
+import aoc.v2.ihm.IIHM;
+import aoc.v2.moteur.ConcreteHorloge;
 
 public class ConcreteControleur implements Controleur, Observer {
 	
 	private Moteur moteur;
-	private IHM ihm;
+	private IIHM ihm;
+	private Horloge horloge;
+	private CommandEteindreLed eteindreLed;
 	
 	public ConcreteControleur() {
 		this.moteur = null;
 		this.ihm = null;
+		horloge = new ConcreteHorloge();
+		eteindreLed = new CommandEteindreLed(this);
 	}
 	
 	@Override
@@ -32,17 +40,26 @@ public class ConcreteControleur implements Controleur, Observer {
 	public void marquerTempo() {
 		this.ihm.flasherLED(false);
 		this.ihm.sonner();
+		this.horloge.activerApresDelai(eteindreLed, (float) 0.2);
+		
 	}
 	
 	@Override
 	public void marquerMesure() {
 		this.ihm.flasherLED(true);
 		this.ihm.sonner();
+		this.horloge.activerApresDelai(eteindreLed, (float) 0.2);
+		
 	}
 
 	@Override
 	public void updateTempo(float tempo) {
 		this.moteur.setTempo(tempo);
+	}
+	
+	@Override
+	public void eteindreLed() {
+		this.ihm.eteindreLED();	
 	}
 
 	@Override
@@ -66,17 +83,24 @@ public class ConcreteControleur implements Controleur, Observer {
 		this.moteur.setCmdMarquerMesure(new CommandMarquerMesure(this));
 	}
 
-	public IHM getIhm() {
+	@Override
+	public void update() {
+		this.ihm.majTempo(moteur.getTempo());
+		this.ihm.afficherMesure(moteur.getNbTemps());
+	}
+
+	public IIHM getIhm() {
 		return ihm;
 	}
 
 	public void setIhm(IHM ihm) {
-		this.ihm = ihm;
+		this.ihm=ihm;
+		
 	}
 
 	@Override
-	public void update() {
-		this.ihm.majTempo(moteur.getTempo());
+	public void setIhm(IIHM ihm) {
+		this.ihm=ihm;
 	}
 	
 }

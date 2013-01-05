@@ -1,7 +1,7 @@
-package aoc.commands;
+package aoc.v1.command;
 
-import aoc.controller.Controleur;
 import aoc.util.Command;
+import aoc.v1.controller.Controleur;
 
 public class CommandStart implements Command {
 	

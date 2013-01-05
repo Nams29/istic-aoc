@@ -1,4 +1,4 @@
-package aoc.ihm;
+package aoc.v1.ihm;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -24,14 +24,14 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import aoc.commands.CommandEteindreLed;
-import aoc.commands.CommandStart;
-import aoc.commands.CommandStop;
-import aoc.controller.Controleur;
-import aoc.moteur.ConcreteHorloge;
 import aoc.util.Command;
 import aoc.util.Horloge;
 import aoc.util.Subject;
+import aoc.v1.command.CommandEteindreLed;
+import aoc.v1.command.CommandStart;
+import aoc.v1.command.CommandStop;
+import aoc.v1.controller.Controleur;
+import aoc.v1.moteur.ConcreteHorloge;
 
 public class IHM extends JFrame implements Subject {
 

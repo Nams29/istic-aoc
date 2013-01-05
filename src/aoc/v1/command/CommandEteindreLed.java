@@ -1,7 +1,7 @@
-package aoc.commands;
+package aoc.v1.command;
 
-import aoc.ihm.IHM;
 import aoc.util.Command;
+import aoc.v1.ihm.IHM;
 
 public class CommandEteindreLed implements Command {
 

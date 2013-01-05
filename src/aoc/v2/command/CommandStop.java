@@ -1,7 +1,7 @@
-package aoc.commands;
+package aoc.v2.command;
 
-import aoc.controller.Controleur;
 import aoc.util.Command;
+import aoc.v2.controller.Controleur;
 
 public class CommandStop implements Command {
 

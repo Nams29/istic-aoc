@@ -1,7 +1,7 @@
-package aoc.controller;
+package aoc.v2.controller;
 
-import aoc.ihm.IHM;
-import aoc.moteur.Moteur;
+import aoc.v2.moteur.Moteur;
+import aoc.v2.ihm.IIHM;
 
 public interface Controleur {
 	
@@ -10,6 +10,9 @@ public interface Controleur {
 	
 	public void marquerTempo();
 	public void marquerMesure();
+	
+	public void eteindreLed();
+	
 	public void updateTempo(float tempo);
 	
 	public void augmenterMesures();
@@ -18,6 +21,6 @@ public interface Controleur {
 	public Moteur getMoteur();
 	public void setMoteur(Moteur m);
 	
-	public IHM getIhm();
-	public void setIhm(IHM i);
+	public IIHM getIhm();
+	public void setIhm(IIHM ihm);
 }

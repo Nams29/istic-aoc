@@ -4,7 +4,7 @@ import aoc.util.Horloge;
 
 public  class Materiel {
 
-	// Permet d’accéder aux interfaces de contrôle du matériel
+	// Permet dï¿½accï¿½der aux interfaces de contrï¿½le du matï¿½riel
 	static Horloge getHorloge() {
 		return null;
 	}

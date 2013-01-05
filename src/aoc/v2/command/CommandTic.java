@@ -1,7 +1,7 @@
-package aoc.commands;
+package aoc.v2.command;
 
-import aoc.moteur.Moteur;
 import aoc.util.Command;
+import aoc.v2.moteur.Moteur;
 
 public class CommandTic implements Command {
 	
