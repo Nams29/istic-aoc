@@ -225,6 +225,11 @@ public class IHM extends JFrame implements IIHM {
 	public void majTempo(float tempo) {
 		this.textTempo.setText(tempo+"");
 	}
+	
+	@Override
+	public void majMesure(int nbTemps) {
+		this.textNbTemps.setText(nbTemps+"");
+	}
 
 	@Override
 	public void afficherMesure(float mesure) {
@@ -240,6 +245,5 @@ public class IHM extends JFrame implements IIHM {
 	public void setController(Controleur controller) {
 		this.controller = controller;
 	}
-
 
 }

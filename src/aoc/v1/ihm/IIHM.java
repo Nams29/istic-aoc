@@ -25,6 +25,7 @@ public interface IIHM {
 	 * @param tempo
 	 */
 	public void majTempo(float tempo) ;
+	public void majMesure(int nbTemps);
 	
 	/**
 	 * Mets à jour l'affichage de la mesure
@@ -34,4 +35,6 @@ public interface IIHM {
 	
 	public Controleur getController();
 	public void setController(Controleur controller);
+
+	
 }
