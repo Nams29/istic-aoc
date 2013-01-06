@@ -10,7 +10,7 @@
   </interface>  
   <interface id="2" corner="BOTTOM_RIGHT" language="java" name="aoc.util.Subject" project="AOC_Metronome" 
     file="/AOC_Metronome/src/aoc/util/Subject.java" binary="false">    
-    <position height="-1" width="-1" x="648" y="139"/>    
+    <position height="-1" width="-1" x="550" y="139"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </interface>  
   <class id="3" corner="BOTTOM_RIGHT" language="java" name="aoc.moteur.ConcreteMoteur" project="AOC_Metronome" 
     file="/AOC_Metronome/src/aoc/moteur/ConcreteMoteur.java" binary="false">    
-    <position height="-1" width="-1" x="649" y="274"/>    
+    <position height="-1" width="-1" x="551" y="274"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false"/>      
       <operations public="false" package="false" protected="false" private="false"/>    
@@ -32,18 +32,18 @@
       <operations public="false" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <realization id="5">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="6">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="6" name="observers"/>      
-      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+      <attribute id="7" name="observers"/>      
+      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="8">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
   <realization id="9">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  

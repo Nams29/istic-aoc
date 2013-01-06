@@ -1,0 +1,88 @@
+<class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <interface id="1" corner="BOTTOM_RIGHT" language="java" name="aoc.v2.adapter.Adapter" project="AOC_Metronome" 
+    file="/AOC_Metronome/src/aoc/v2/adapter/Adapter.java" binary="false">    
+    <position height="-1" width="-1" x="472" y="415"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="aoc.v2.adapter.ConcreteAdapter" project="AOC_Metronome" 
+    file="/AOC_Metronome/src/aoc/v2/adapter/ConcreteAdapter.java" binary="false">    
+    <position height="-1" width="-1" x="472" y="520"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <interface id="3" corner="BOTTOM_RIGHT" language="java" name="aoc.controller.Controleur" project="AOC_Metronome" 
+    file="/AOC_Metronome/src/aoc/controller/Controleur.java" binary="false">    
+    <position height="-1" width="-1" x="603" y="304"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <interface id="4" corner="BOTTOM_RIGHT" language="java" name="aoc.v1.ihm.IHM" project="AOC_Metronome" 
+    file="/AOC_Metronome/src/aoc/v1/ihm/IHM.java" binary="false">    
+    <position height="-1" width="-1" x="332" y="303"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </interface>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="aoc.v1.ihm.ConcreteIHM" project="AOC_Metronome" 
+    file="/AOC_Metronome/src/aoc/v1/ihm/ConcreteIHM.java" binary="false">    
+    <position height="-1" width="-1" x="332" y="417"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false"/>      
+      <operations public="false" package="false" protected="false" private="false"/>    
+    </display>  
+  </class>  
+  <association id="6">    
+    <bendpoint x="603" y="520"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="7" name="controleur">        
+        <position height="15" width="56" x="607" y="351"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="9">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="10">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="11" name="controller">        
+        <position height="15" width="52" x="492" y="310"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="15" width="21" x="531" y="333"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="13">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
