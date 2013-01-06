@@ -103,7 +103,7 @@ public class ConcreteMoteur implements Moteur, Subject{
 
 	@Override
 	public void setNbTemps(int nbTemps) {
-		if (nbTemps > 0) {
+		if (nbTemps >= 2 && nbTemps <= 7) {
 			this.nbTemps = nbTemps;
 			this.notifyObservers();
 		}
