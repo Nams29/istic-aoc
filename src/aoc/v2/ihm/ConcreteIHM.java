@@ -44,10 +44,10 @@ private static final long serialVersionUID = 9212323680853243952L;
 	
 	JLabel[] tabLed = new JLabel[3];
 	
-	private JLabel labelLed1;
-	private JLabel labelLed2;
+	public JLabel labelLed1;
+	public JLabel labelLed2;
 	public JSlider sliderTempo;
-	private JTextField textTempo;
+	public JTextField textTempo;
 	
 	public ButtonBool[] tabButton = new ButtonBool[5] ;
 	
@@ -57,7 +57,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 	public ButtonBool buttonMinus; // 4	
 	
 	
-	private JTextField textNbTemps;
+	public JTextField textNbTemps;
 	
 	private File sound;
 	private Clip clip;
