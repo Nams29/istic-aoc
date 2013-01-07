@@ -16,6 +16,9 @@ public class CommandTic implements Command {
 		moteur.tic();
 	}
 
+	/**
+	 * @return le moteur
+	 */
 	public Moteur getMoteur() {
 		return moteur;
 	}

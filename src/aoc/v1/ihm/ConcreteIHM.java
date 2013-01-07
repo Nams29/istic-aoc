@@ -71,7 +71,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 	}
 
 	/**
-	 * Initialise les �l�ments graphiques
+	 * Initialise les éléments graphiques
 	 */
 	private void initLayout() {
 		// Layout
@@ -240,6 +240,5 @@ public class ConcreteIHM extends JFrame implements IHM {
 	public void setController(Controleur controller) {
 		this.controller = controller;
 	}
-
-
+	
 }

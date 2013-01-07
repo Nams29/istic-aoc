@@ -16,6 +16,9 @@ public class CommandMarquerTemps implements Command {
 		this.controleur.marquerTempo();
 	}
 	
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getControleur() {
 		return controleur;
 	}

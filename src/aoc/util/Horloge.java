@@ -3,14 +3,27 @@ package aoc.util;
 
 public interface Horloge {
 
-	// Appel pÈriodique de líopÈration execute() de cmd,
-	// toutes les pÈriodeEnSecondes secondes,
-	// avec une prÈcision díune milliseconde.
+	/**
+	 * Appel p√©riodique de l'o√©ration execute() de cmd,
+	 * toutes les p√©riodeEnSecondes secondes,
+	 * avec une pr√©cision d'une milliseconde.
+	 * @param cmd la commande √† ex√©cuter
+	 * @param periodeEnSecondes la p√©riode en secondes
+	 */
 	void activerPeriodiquement(Command cmd, float periodeEnSecondes);
 
-	// Appel de líopÈration execute() de cmd,
-	// aprËs un dÈlai de dÈlaiEnSecondes secondes,
-	// avec une prÈcision díune milliseconde.
+	/**
+	 * Appel de l'op√©ration execute() de cmd,
+	 * apr√®s un d√©lai de delaiEnSecondes secondes,
+	 * avec une pr√©cision d'une milliseconde.
+	 * @param cmdla commande √† ex√©cuter
+	 * @param delaiEnSecondes le d√©lai en secondes
+	 */
 	void activerApresDelai(Command cmd, float delaiEnSecondes);
+	
+	/**
+	 * D√©sactive l'activation de cmd
+	 * @param cmd la commande √† ex√©cuter
+	 */
 	void desactiver(Command cmd);
 }

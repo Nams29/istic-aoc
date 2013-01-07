@@ -16,6 +16,9 @@ public class CommandStop implements Command {
 		this.controleur.stop();
 	}
 
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getControleur() {
 		return controleur;
 	}

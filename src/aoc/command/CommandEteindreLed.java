@@ -16,6 +16,9 @@ private Controleur c;
 		this.c.eteindreLed();
 	}
 	
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getControleur() {
 		return c;
 	}

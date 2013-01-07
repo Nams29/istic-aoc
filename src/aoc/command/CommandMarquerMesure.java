@@ -16,6 +16,9 @@ public class CommandMarquerMesure implements Command {
 		this.controleur.marquerMesure();
 	}
 	
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getControleur() {
 		return controleur;
 	}

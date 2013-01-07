@@ -5,5 +5,9 @@ import aoc.v1.ihm.IHM;
 
 public interface Adapter extends IHM, Controleur{
 	
+	/**
+	 * Lit l'état du matériel
+	 */
 	public void lireMateriel();
+	
 }

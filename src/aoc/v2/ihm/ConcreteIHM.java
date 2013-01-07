@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -59,7 +59,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 	
 	private JTextField textNbTemps;
 	
-	private File sound;
+	private URL sound;
 	private Clip clip;
 	private AudioInputStream audio;
 	
@@ -67,7 +67,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 		super();
 		
 		horloge = new ConcreteHorloge();	
-		sound = new File("res/click.wav");
+		sound = this.getClass().getClassLoader().getResource("click.wav");
 
 		this.initLayout();
 		
@@ -167,38 +167,32 @@ private static final long serialVersionUID = 9212323680853243952L;
 
 
 	/**
-	 * @return the controller
+	 * @return l'adaptateur
 	 */
 	public Adapter getAdapter() {
 		return adapter;
 	}
-
-
+	
 	/**
-	 * @param controller the controller to set
+	 * @param adapter L'adaptateur
 	 */
 	public void setAdapter(Adapter adapter) {
 		this.adapter = adapter;
 	}
-
-
+	
 	@Override
 	public void allumerLED(int numLED) {
 		tabLed[numLED].setIcon(led_on);
 		this.repaint();
 	}
-
-
-
+	
 	@Override
 	public void eteindreLED(int numLED) {
 		this.tabLed[numLED].setIcon(led_off);
 		
 		this.repaint();
 	}
-
-
-
+	
 	@Override
 	public void afficherTempo(int valeurTempo) {
 		this.textTempo.setText(valeurTempo+"");

@@ -33,6 +33,10 @@ public class ConcreteHorloge implements Horloge {
 		timer.cancel();
 	}
 	
+	/**
+	 * HorlogeTask Clas
+	 * Représente une tâche de l'horloge. Contient l'objet Command à exécuter.
+	 */
 	private class HorlogeTask extends TimerTask {
 		
 		Command cmd;

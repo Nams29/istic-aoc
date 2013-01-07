@@ -32,6 +32,13 @@ public interface IHM {
 	 */
 	public void majMesure(int nbTemps);
 	
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getController();
+	
+	/**
+	 * @param controller le contrôleur
+	 */
 	public void setController(Controleur controller);
 }

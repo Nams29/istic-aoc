@@ -16,6 +16,9 @@ public class CommandStart implements Command {
 		controleur.start();
 	}
 
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getControleur() {
 		return controleur;
 	}

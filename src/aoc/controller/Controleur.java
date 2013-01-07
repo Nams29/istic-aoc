@@ -46,9 +46,23 @@ public interface Controleur {
 	 */
 	public void diminuerMesures();
 	
+	/**
+	 * @return le moteur
+	 */
 	public Moteur getMoteur();
+	
+	/**
+	 * @param m le moteur
+	 */
 	public void setMoteur(Moteur m);
 	
+	/**
+	 * @return l'interface
+	 */
 	public IHM getIhm();
+	
+	/**
+	 * @param ihm l'interface
+	 */
 	public void setIhm(IHM ihm);
 }

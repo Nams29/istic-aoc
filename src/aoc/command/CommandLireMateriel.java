@@ -17,6 +17,9 @@ public class CommandLireMateriel implements Command {
 		((Adapter)controleur).lireMateriel();
 	}
 
+	/**
+	 * @return le contrôleur
+	 */
 	public Controleur getController() {
 		return controleur;
 	}

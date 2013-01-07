@@ -139,11 +139,17 @@ public class ConcreteMoteur implements Moteur, Subject{
 	public Controleur getController() {
 		return controleur;
 	}
-
+	
+	/**
+	 * @return l'horloge
+	 */
 	public Horloge getHorloge() {
 		return horloge;
 	}
 
+	/**
+	 * @param horloge l'horloge
+	 */
 	public void setHorloge(Horloge horloge) {
 		this.horloge = horloge;
 	}
