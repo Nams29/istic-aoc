@@ -2,15 +2,12 @@ package aoc.test;
 
 import static org.junit.Assert.*;
 
-import javax.swing.JFrame;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import aoc.controller.ConcreteControleur;
 import aoc.controller.Controleur;
 import aoc.moteur.ConcreteMoteur;
-import aoc.moteur.Moteur;
 import aoc.v2.ihm.ConcreteIHM;
 import aoc.v2.adapter.ConcreteAdapter;
 
@@ -27,60 +24,57 @@ public class TestAdapter {
 		adapter = new ConcreteAdapter();
 		ihm = new ConcreteIHM();
 		
-		//lien moteur/controler
 		controller.setMoteur(moteur);
 		moteur.setController(controller);
 		
-		//lien controller adapter
 		controller.setIhm(adapter);
 		adapter.setController(controller);
 		
-		//lien Ihm adapter		
+	
 		ihm.setAdapter(adapter);
-		adapter.setIhm(ihm);
+		adapter.setIhm(ihm);		
     }
 
-	@Test
-	public void testLireMateriel() {
-		//dur a faire
-	}
 
 	@Test
 	public void testStart() {
-		controller.start();
-		
+		adapter.start();
+		adapter.marquerTempo();
+		//System.out.println(moteur.getEtat());
 		assertEquals(moteur.getEtat(),true);
-		assertEquals(moteur.getHorloge()!=null,true);
+		//assertEquals(moteur.getHorloge()!=null,true);
 	}
 
 	@Test
 	public void testStop() {
-		controller.stop();
+		adapter.stop();
 		assertEquals(moteur.getEtat(),false);
 	}
 
 	@Test
 	public void testMarquerTempo() {
-		controller.marquerTempo();
-		assertEquals(ihm.labelLed1.getIcon().toString()=="res/red_led.png",true);
+		adapter.marquerTempo();
+		assertEquals(ihm.labelLed1.getIcon().toString().contains("red_led.png"),true);
 	}
 
 	@Test
 	public void testMarquerMesure() {
-		controller.marquerMesure();
-		assertEquals(ihm.labelLed2.getIcon().toString()=="res/red_led.png",true);
+		adapter.marquerMesure();
+		assertEquals(ihm.labelLed2.getIcon().toString().contains("red_led.png"),true);
 	}
 
 	@Test
 	public void testUpdateTempo() {
-		controller.updateTempo(100);
-		assertEquals(ihm.textTempo.getText().equals("100"), true);
+		adapter.start();
+		adapter.updateTempo((float) 100.00);
+		System.out.println(Integer.parseInt(ihm.textTempo.getText()));
+		assertEquals(Integer.parseInt(ihm.textTempo.getText()),100);
 	}
 
 	@Test
 	public void testAugmenterMesures() {
 		int mesure = moteur.getNbTemps();
-		controller.augmenterMesures();
+		adapter.augmenterMesures();
 		
 		assertEquals(moteur.getNbTemps(),mesure+1);
 		assertEquals(ihm.textNbTemps.getText().equals((mesure+1)+""), true);
@@ -89,7 +83,7 @@ public class TestAdapter {
 	@Test
 	public void testDiminuerMesures() {
 		int mesure = moteur.getNbTemps();
-		controller.diminuerMesures();
+		adapter.diminuerMesures();
 		
 		assertEquals(moteur.getNbTemps(),mesure-1);
 		assertEquals(ihm.textNbTemps.getText().equals((mesure-1)+""), true);
@@ -98,36 +92,41 @@ public class TestAdapter {
 
 	@Test
 	public void testEteindreLed() {
-		controller.marquerMesure();
-		controller.eteindreLed();
-		assertEquals(ihm.labelLed1.getIcon().toString()=="res/grey_led.png",true);
-		assertEquals(ihm.labelLed2.getIcon().toString()=="res/grey_led.png",true);
+		adapter.marquerMesure();
+		adapter.eteindreLed();
+		assertEquals(ihm.labelLed1.getIcon().toString().contains("grey_led.png"),true);
+		assertEquals(ihm.labelLed2.getIcon().toString().contains("grey_led.png"),true);
 	}
 
 
 	@Test
 	public void testFlasherLED() {
-		controller.marquerMesure();
-		assertEquals(ihm.labelLed1.getIcon().toString()=="res/red_led.png",true);
+		this.adapter.flasherLED(false);
+		assertEquals(ihm.labelLed1.getIcon().toString().contains("red_led.png"),true);
+		assertEquals(ihm.labelLed2.getIcon().toString().contains("grey_led.png"),true);
+		
+		this.adapter.flasherLED(true);
+		assertEquals(ihm.labelLed1.getIcon().toString().contains("red_led.png"),true);
+		assertEquals(ihm.labelLed2.getIcon().toString().contains("red_led.png"),true);
 	}
 
 	@Test
 	public void testEteindreLED() {
-		assertEquals(ihm.labelLed1.getIcon().toString()=="res/grey_led.png",true);
-		assertEquals(ihm.labelLed2.getIcon().toString()=="res/grey_led.png",true);
+		this.adapter.eteindreLED();
+		assertEquals(ihm.labelLed1.getIcon().toString().contains("grey_led.png"),true);
+		assertEquals(ihm.labelLed2.getIcon().toString().contains("grey_led.png"),true);
 	}
 
 	@Test
 	public void testMajTempo() {
 		adapter.majTempo(100);
-		assertEquals(ihm.textNbTemps.getText().equals(100+""), true);
+		assertEquals(Integer.parseInt(ihm.textTempo.getText()),100);
 	}
 
 	@Test
 	public void testMajMesure() {
 		adapter.majMesure(4);
-		assertEquals(ihm.textNbTemps.getText().equals(4+""), true);
-		
+		assertEquals(Integer.parseInt(ihm.textNbTemps.getText()),4);		
 	}
 
 }

@@ -226,7 +226,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 	
 	@Override
 	public float position() {
-		return this.sliderTempo.getValue();
+		return  (this.sliderTempo.getValue()/(float)240.0);
 	}
 	
 	@Override

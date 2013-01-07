@@ -42,13 +42,13 @@ public class TestControleur {
 	@Test
 	public final void testMarquerTempo() {
 		c.marquerTempo();
-		assertEquals(i.labelLed1.getIcon().toString()=="res/red_led.png",true);
+		assertEquals(i.labelLed1.getIcon().toString().contains("red_led.png"),true);
 	}
 
 	@Test
 	public final void testMarquerMesure() {
 		c.marquerMesure();
-		assertEquals(i.labelLed2.getIcon().toString()=="res/red_led.png",true);
+		assertEquals(i.labelLed2.getIcon().toString().contains("red_led.png"),true);
 	}
 
 	@Test
@@ -61,8 +61,9 @@ public class TestControleur {
 	public final void testEteindreLed() {
 		c.marquerMesure();
 		c.eteindreLed();
-		assertEquals(i.labelLed1.getIcon().toString()=="res/grey_led.png",true);
-		assertEquals(i.labelLed2.getIcon().toString()=="res/grey_led.png",true);
+		System.out.println(i.labelLed1.getIcon().toString());
+		assertEquals(i.labelLed1.getIcon().toString().contains("grey_led.png"),true);
+		assertEquals(i.labelLed2.getIcon().toString().contains("grey_led.png"),true);
 	}
 
 	@Test

@@ -15,10 +15,10 @@ public class ConcreteAdapter implements Adapter {
 	
 	private Horloge horloge;
 
-	private boolean btnStart;
-	private boolean btnStop;
-	private boolean btnPlus;
-	private boolean btnMinus;
+	private boolean btnStart;//1
+	private boolean btnStop;//2
+	private boolean btnPlus;//3
+	private boolean btnMinus;//4
 
 	private float tempo;
 
@@ -28,35 +28,37 @@ public class ConcreteAdapter implements Adapter {
 	public void lireMateriel() {
 
 		boolean oldBtnStart = btnStart;
-		btnStart=ihm.buttonStart.isActive();
+		btnStart=ihm.touchePressée(1);
 		if ((btnStart != oldBtnStart )&& btnStart) {
 			controleur.start();
 		}
 
 
 		boolean oldBtnStop = btnStop;
-		btnStop=ihm.buttonStop.isActive();
+		btnStop=ihm.touchePressée(2);
 		if ((btnStop != oldBtnStop )&& btnStop) {
 			controleur.stop();
 		}
 
 		boolean oldBtnPlus = btnPlus;
-		btnPlus=ihm.buttonPlus.isActive();
+		btnPlus=ihm.touchePressée(3);
 		if ((btnPlus != oldBtnPlus )&& btnPlus) {
 			controleur.augmenterMesures();
 		}
 
 		boolean oldBtnMinus = btnMinus;
-		btnMinus=ihm.buttonMinus.isActive();
+		btnMinus=ihm.touchePressée(4);
 		if ((btnMinus != oldBtnMinus )&& btnMinus) {
 			controleur.diminuerMesures();
 		}
 
 		float oldtempo = tempo;
 		//permet de metre à jour uniquement quand on ne touche plus au slider
-		if(!ihm.sliderTempo.getValueIsAdjusting()){
-			tempo= ihm.sliderTempo.getValue();
-		}
+		//if(!ihm.sliderTempo.getValueIsAdjusting()){
+			//permet de récuperer le vrai tempo
+		tempo= ihm.position()*240;
+		System.out.println(tempo);
+		//}
 		if (tempo != oldtempo ) {
 			controleur.updateTempo(tempo);
 		}
