@@ -42,15 +42,15 @@ public class ConcreteIHM extends JFrame implements IHM {
 	private ImageIcon led_on;
 	private ImageIcon led_off;
 	
-	private JLabel labelLed1;
-	private JLabel labelLed2;
+	public JLabel labelLed1;
+	public JLabel labelLed2;
 	private JSlider sliderTempo;
-	private JTextField textTempo;
+	public JTextField textTempo;
 	private JButton buttonStart;
 	private JButton buttonStop;
 	private JButton buttonPlus;
 	private JButton buttonMinus;
-	private JTextField textNbTemps;
+	public JTextField textNbTemps;
 	
 	private URL sound;
 	private Clip clip;
