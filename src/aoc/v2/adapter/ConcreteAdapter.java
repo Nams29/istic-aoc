@@ -17,7 +17,6 @@ public class ConcreteAdapter implements Adapter {
 
 	private boolean btnStart;
 	private boolean btnStop;
-
 	private boolean btnPlus;
 	private boolean btnMinus;
 
@@ -179,6 +178,20 @@ public class ConcreteAdapter implements Adapter {
 		this.controleur = controller;
 	}
 
-
+	public boolean getbtnStart(){
+		return btnStart;
+	}
+	
+	public boolean getbtnStop(){
+		return btnStop;
+	}
+	
+	public boolean getbtnPlus(){
+		return btnPlus;
+	}
+	
+	public boolean getbtnMinus(){
+		return btnMinus;
+	}
 
 }

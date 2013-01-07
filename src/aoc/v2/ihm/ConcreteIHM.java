@@ -91,8 +91,8 @@ private static final long serialVersionUID = 9212323680853243952L;
 		gbc.insets = new Insets(10, 10, 10, 10);
 
 		// LEDS
-		this.led_on = new ImageIcon("res/red_led.png");
-		this.led_off = new ImageIcon("res/grey_led.png");		
+		this.led_on = new ImageIcon(this.getClass().getClassLoader().getResource("red_led.png"));
+		this.led_off = new ImageIcon(this.getClass().getClassLoader().getResource("grey_led.png"));	
 		// LED 1
 		this.labelLed1 = new JLabel(led_off);
 		this.getContentPane().add(this.labelLed1, gbc);
@@ -131,23 +131,23 @@ private static final long serialVersionUID = 9212323680853243952L;
 		// Bouton Start
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		this.buttonStart = new ButtonBool(new ImageIcon("res/play.png"));
+		this.buttonStart = new ButtonBool(new ImageIcon(this.getClass().getClassLoader().getResource("play.png")));
 		this.getContentPane().add(buttonStart, gbc);
 
 		// Button Stop
 		gbc.gridx = 1;
-		this.buttonStop = new ButtonBool(new ImageIcon("res/stop.png"));
+		this.buttonStop = new ButtonBool(new ImageIcon(this.getClass().getClassLoader().getResource("stop.png")));
 		this.getContentPane().add(buttonStop, gbc);
 
 		// Bouton Plus
 		gbc.gridx = 2;
 		gbc.weightx = 0.5;
-		this.buttonPlus = new ButtonBool(new ImageIcon("res/plus.png"));
+		this.buttonPlus = new ButtonBool(new ImageIcon(this.getClass().getClassLoader().getResource("plus.png")));
 		this.getContentPane().add(buttonPlus, gbc);
 
 		// Bouton Moins
 		gbc.gridx = 3;
-		this.buttonMinus = new ButtonBool(new ImageIcon("res/minus.png"));
+		this.buttonMinus = new ButtonBool(new ImageIcon(this.getClass().getClassLoader().getResource("minus.png")));
 		this.getContentPane().add(buttonMinus, gbc);
 		
 		tabButton[1] = buttonStart;

@@ -6,8 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -52,7 +52,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 	private JButton buttonMinus;
 	private JTextField textNbTemps;
 	
-	private File sound;
+	private URL sound;
 	private Clip clip;
 	private AudioInputStream audio;
 	
@@ -61,7 +61,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 		
 		this.controller = controller;
 		
-		this.sound = new File("res/click.wav");
+		this.sound = this.getClass().getClassLoader().getResource("click.wav");
 
 		this.initLayout();
 		
@@ -84,8 +84,8 @@ public class ConcreteIHM extends JFrame implements IHM {
 		gbc.insets = new Insets(10, 10, 10, 10);
 
 		// LEDS
-		this.led_on = new ImageIcon("res/red_led.png");
-		this.led_off = new ImageIcon("res/grey_led.png");
+		this.led_on = new ImageIcon(this.getClass().getClassLoader().getResource("red_led.png"));
+		this.led_off = new ImageIcon(this.getClass().getClassLoader().getResource("grey_led.png"));	
 		
 		// LED 1
 		this.labelLed1 = new JLabel(led_off);
@@ -131,7 +131,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 		// Bouton Start
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		this.buttonStart = new JButton(new ImageIcon("res/play.png"));
+		this.buttonStart = new JButton(new ImageIcon(this.getClass().getClassLoader().getResource("play.png")));
 		this.buttonStart.addActionListener(new ActionListener() {
 
 			@Override
@@ -144,7 +144,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 
 		// Button Stop
 		gbc.gridx = 1;
-		this.buttonStop = new JButton(new ImageIcon("res/stop.png"));
+		this.buttonStop = new JButton(new ImageIcon(this.getClass().getClassLoader().getResource("stop.png")));
 		this.buttonStop.addActionListener(new ActionListener() {
 
 			@Override
@@ -158,7 +158,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 		// Bouton Plus
 		gbc.gridx = 2;
 		gbc.weightx = 0.5;
-		this.buttonPlus = new JButton(new ImageIcon("res/plus.png"));
+		this.buttonPlus = new JButton(new ImageIcon(this.getClass().getClassLoader().getResource("plus.png")));
 		this.buttonPlus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -169,7 +169,7 @@ public class ConcreteIHM extends JFrame implements IHM {
 
 		// Bouton Moins
 		gbc.gridx = 3;
-		this.buttonMinus = new JButton(new ImageIcon("res/minus.png"));
+		this.buttonMinus = new JButton(new ImageIcon(this.getClass().getClassLoader().getResource("minus.png")));
 		this.buttonMinus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
