@@ -4,14 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.io.IOException;
-import java.net.URL;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,11 +29,10 @@ private static final long serialVersionUID = 9212323680853243952L;
 	private static final int TEMPO_INIT = 60;    
 
 	private Adapter adapter;
-	
 	private Horloge horloge;
 
-	private ImageIcon led_on;
-	private ImageIcon led_off;
+	public ImageIcon led_on;
+	public ImageIcon led_off;
 	
 	JLabel[] tabLed = new JLabel[3];
 	
@@ -56,24 +48,30 @@ private static final long serialVersionUID = 9212323680853243952L;
 	public ButtonBool buttonPlus; // 3
 	public ButtonBool buttonMinus; // 4	
 	
-	
 	public JTextField textNbTemps;
 	
-	private URL sound;
-	private Clip clip;
-	private AudioInputStream audio;
+	private Afficheur afficheur;
+	private Clavier clavier;
+	private EmetteurSonore emetteurSonore;
+	private Molette molette;
+
 	
 	public ConcreteIHM() {
 		super();
 		
 		horloge = new ConcreteHorloge();	
-		sound = this.getClass().getClassLoader().getResource("click.wav");
 
 		this.initLayout();
+		
+		afficheur = new ConcreteAfficheur(this);
+		clavier = new ConcreteClavier(this); 
+		emetteurSonore = new ConcreteEmetteurSonore(this);
+		molette = new ConcreteMolette(this);
 		
 		Dimension dim = new Dimension(600, 400);
 		this.setPreferredSize(dim);
 		this.setSize(dim);
+		
 	}
 
 
@@ -169,6 +167,7 @@ private static final long serialVersionUID = 9212323680853243952L;
 	/**
 	 * @return l'adaptateur
 	 */
+	
 	public Adapter getAdapter() {
 		return adapter;
 	}
@@ -181,77 +180,29 @@ private static final long serialVersionUID = 9212323680853243952L;
 	}
 	
 	@Override
-	public void allumerLED(int numLED) {
-		tabLed[numLED].setIcon(led_on);
-		this.repaint();
-	}
-	
-	@Override
-	public void eteindreLED(int numLED) {
-		this.tabLed[numLED].setIcon(led_off);
-		
-		this.repaint();
-	}
-	
-	@Override
-	public void afficherTempo(int valeurTempo) {
-		this.textTempo.setText(valeurTempo+"");
-	}
-	
-	@Override
-	public void afficherMesure(int valeurMesure) {
-		this.textNbTemps.setText(valeurMesure+"");
-	}
-	
-	@Override
-	public boolean touchePressée(int i) {
-		return tabButton[i].isActive();
-	}
-	
-	@Override
-	public void emettreClic() {
-		try {
-			audio = AudioSystem.getAudioInputStream(sound);
-			clip = AudioSystem.getClip();
-			clip.open(audio);
-			clip.start();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		}	
-	}
-	
-	@Override
-	public float position() {
-		return  (this.sliderTempo.getValue()/(float)240.0);
-	}
-	
-	@Override
-	public Horloge getHorloge() {
-		return this.horloge;
-	}
-	
-	@Override
 	public Clavier getClavier() {
-		return null;
+		return this.clavier;
 	}
 	
 	@Override
 	public Molette getMolette() {
-		return null;
+		return this.molette;
 	}
 	
 	@Override
 	public EmetteurSonore getEmetteurSonore() {
-		return null;
+		return this.emetteurSonore;
 	}
 	
 	@Override
 	public Afficheur getAfficheur() {
-		return null;
+		return this.afficheur;
+	}
+
+
+	@Override
+	public Horloge getHorloge() {
+		return this.horloge;
 	}
 
 }

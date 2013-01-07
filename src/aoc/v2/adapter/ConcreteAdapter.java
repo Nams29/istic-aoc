@@ -28,26 +28,26 @@ public class ConcreteAdapter implements Adapter {
 	public void lireMateriel() {
 
 		boolean oldBtnStart = btnStart;
-		btnStart=ihm.touchePressée(1);
+		btnStart=ihm.getClavier().touchePressée(1);
 		if ((btnStart != oldBtnStart )&& btnStart) {
 			controleur.start();
 		}
 
 
 		boolean oldBtnStop = btnStop;
-		btnStop=ihm.touchePressée(2);
+		btnStop=ihm.getClavier().touchePressée(2);
 		if ((btnStop != oldBtnStop )&& btnStop) {
 			controleur.stop();
 		}
 
 		boolean oldBtnPlus = btnPlus;
-		btnPlus=ihm.touchePressée(3);
+		btnPlus=ihm.getClavier().touchePressée(3);
 		if ((btnPlus != oldBtnPlus )&& btnPlus) {
 			controleur.augmenterMesures();
 		}
 
 		boolean oldBtnMinus = btnMinus;
-		btnMinus=ihm.touchePressée(4);
+		btnMinus=ihm.getClavier().touchePressée(4);
 		if ((btnMinus != oldBtnMinus )&& btnMinus) {
 			controleur.diminuerMesures();
 		}
@@ -56,7 +56,7 @@ public class ConcreteAdapter implements Adapter {
 		//permet de metre à jour uniquement quand on ne touche plus au slider
 		//if(!ihm.sliderTempo.getValueIsAdjusting()){
 			//permet de récuperer le vrai tempo
-		tempo= ihm.position()*240;
+		tempo= ihm.getMolette().position()*240;
 		System.out.println(tempo);
 		//}
 		if (tempo != oldtempo ) {
@@ -145,29 +145,29 @@ public class ConcreteAdapter implements Adapter {
 
 	@Override
 	public void sonner() {
-		ihm.emettreClic();
+		ihm.getEmetteurSonore().emettreClic();
 	}
 
 	@Override
 	public void flasherLED(boolean mesure) {
-		ihm.allumerLED(1);
-		if (mesure){ihm.allumerLED(2);}
+		ihm.getAfficheur().allumerLED(1);
+		if (mesure){ihm.getAfficheur().allumerLED(2);}
 	}
 
 	@Override
 	public void eteindreLED() {
-		ihm.eteindreLED(1);
-		ihm.eteindreLED(2);
+		ihm.getAfficheur().eteindreLED(1);
+		ihm.getAfficheur().eteindreLED(2);
 	}
 
 	@Override
 	public void majTempo(float tempo) {
-		ihm.afficherTempo((int)tempo);
+		ihm.getAfficheur().afficherTempo((int)tempo);
 	}
 	
 	@Override
 	public void majMesure(int nbTemps) {
-		ihm.afficherMesure(nbTemps);
+		ihm.getAfficheur().afficherMesure(nbTemps);
 	}
 	
 	@Override
